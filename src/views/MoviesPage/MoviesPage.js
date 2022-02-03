@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from '../../services/movies-API';
 import SerchBar from "../../components/SearchBar/SearchBar";
 import MoviesList from "../../components/MoviesList/MoviesList";
@@ -8,14 +9,25 @@ export default function MoviesPage() {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const searched = searchParams.get('query');
+
+    useEffect(() => {
+        if (!query) {
+          return;
+        }
+        setSearchParams({ query });
+      }, [query, setSearchParams]);
+
     const handleSubmit = (query) => {
         setQuery(query);
     }
     useEffect(() => {
-        if(!query){
+        if(!searched){
             return;
         }
-        getMoviesByQuery(query).then(res => {
+        getMoviesByQuery(searched).then(res => {
             if(res.results.length === 0) {
                 errorToast('Nothing found. Try enother query');
                 return [];
@@ -23,7 +35,7 @@ export default function MoviesPage() {
             return res.results
         }
             ).then(setMovies)
-    }, [ query ]);
+    }, [searched]);
     
     return (
         <>

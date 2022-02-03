@@ -4,7 +4,7 @@ import { FilmsList, FilmsItem, FilmsTitle} from './MovieList.styled';
 
 export default function MoviesList({movies, path}) {
     const location = useLocation();
-
+   
     return (
         <>
             <FilmsList>

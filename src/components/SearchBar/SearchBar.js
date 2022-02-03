@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { warnToast } from '../../services/notify';
 
 import { SearchForm, SearchInput, SearchButton} from './SearchBar.stylled';
@@ -19,7 +20,7 @@ export default function SerchBar({ onSubmit }) {
         onSubmit(query);
         setQuery('');
     }
-
+   
         return (      
             <>
                 <SearchForm onSubmit={handleSubmit}>
@@ -30,7 +31,6 @@ export default function SerchBar({ onSubmit }) {
                         placeholder="Search movies"
                         value={query}
                         onChange={handleQuery}
-                        
                     />
                     <SearchButton  type="submit">
                         <span>Search</span>

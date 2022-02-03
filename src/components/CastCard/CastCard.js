@@ -19,7 +19,7 @@ export default function CastCard({ cast }) {
                                 </CastSubTitle>
                             </CastItem>
                 }))
-                : (<p>We haven't had any reviews yet</p>)}
+                : (<p>We haven't had any casts yet</p>)}
         </CastContainer>
 
     )

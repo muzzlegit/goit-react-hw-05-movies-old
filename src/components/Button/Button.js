@@ -8,6 +8,7 @@ export default function Button({ cast }) {
     const navigate = useNavigate();
 
     const onGoBack = () => {
+        console.log(location?.state?.from);
         navigate(location?.state?.from ?? '/')
     }
     return (
